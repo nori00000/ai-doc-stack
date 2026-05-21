@@ -1,0 +1,34 @@
+# Cross-platform line endings — let git handle text normalization.
+* text=auto
+
+# Shell scripts always LF (must work when cloned on macOS/Linux)
+*.sh    text eol=lf
+*.bash  text eol=lf
+
+# PowerShell scripts CRLF (Windows-only)
+*.ps1   text eol=crlf
+
+# Markdown / config — default
+*.md    text
+*.json  text
+*.yml   text
+*.yaml  text
+
+# HTML / CSS / JS — LF (works everywhere; consistent with editor defaults)
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.mjs   text eol=lf
+
+# Binaries — never modify
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.svg   binary
+*.pdf   binary
+*.mp4   binary
+*.pptx  binary
+*.docx  binary
+*.xlsx  binary

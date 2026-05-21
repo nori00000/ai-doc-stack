@@ -1,0 +1,57 @@
+# Work-in-progress (not tracked — too noisy + may contain client data)
+drafts/
+assets/
+_frames/
+
+# Generated artifacts (rebuild from source)
+*.mp4
+*.pdf
+exports/lecture.pdf
+exports/lecture.mp4
+exports/_frames/
+
+# Sensitive — company / client templates
+templates/*.pptx
+templates/*.docx
+templates/*.key
+!templates/.gitkeep
+!templates/README.md
+
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+credentials.*
+
+# Node
+node_modules/
+package-lock.json
+.npm/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.python-version
+
+# Claude Code state
+.claude-design/
+*.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Editors / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
