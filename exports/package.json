@@ -1,14 +1,19 @@
 {
   "name": "exports",
   "version": "1.0.0",
-  "description": "",
+  "description": "Export helpers for the AI document stack.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "ai-documents",
+    "html-first",
+    "presentation",
+    "playwright"
+  ],
+  "author": "nori00000",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "playwright": "^1.60.0"

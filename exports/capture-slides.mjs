@@ -3,7 +3,7 @@
  * lecture.html → MP4 변환 — Playwright 단순 캡처 방식
  *
  * 사용법:
- *   1. 별도 셸에서 로컬 서버: cd ~/proposals/exports && python -m http.server 8000
+ *   1. 별도 셸에서 로컬 서버: cd ./workspace/exports && python -m http.server 8000
  *   2. 이 스크립트: node capture-slides.mjs
  *   3. 산출: ./lecture.mp4
  *

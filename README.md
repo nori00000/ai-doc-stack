@@ -1,5 +1,12 @@
 # ai-doc-stack
 
+> **한눈에 / At a glance**
+>
+> An HTML-first AI document authoring stack for producing editable documents and exportable HTML, PDF, PPTX, and MP4 outputs.
+>
+> 한영 프로젝트 설명, 검색 키워드, 저작권 범위: [PROJECT.md](./PROJECT.md) · [NOTICE.md](./NOTICE.md) · [PUBLICATION_REVIEW.md](./PUBLICATION_REVIEW.md)
+
+
 > Daily document authoring infra — AI 비서(Claude Code)와 함께 제안서·강의 자료·기술 문서를 만드는 작업대.
 
 **한 줄 요약**: Paper & Ink editorial 미학 + HTML-first 작성 + 4채널(HTML/PPTX/PDF/MP4) 자동 변환.
@@ -28,7 +35,7 @@ winget install jdx.mise
 ### 1. Clone
 
 ```bash
-git clone git@github.com:<your-user>/ai-doc-stack.git
+git clone git@github.com:nori00000/ai-doc-stack.git
 cd ai-doc-stack
 mise install   # .tool-versions 보고 Node 24 + Python 3.12 자동 설치
 ```

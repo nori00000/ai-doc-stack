@@ -1666,7 +1666,7 @@ npm --version</div>
 <div class="code reveal" aria-label="HTML 슬라이드 데크 생성 프롬프트">
 <div class="code-gutter"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
 <div class="code-body" data-typewriter><span class="c"># 클로드 코드 입력창에 평소 말투로</span>
-~/proposals/drafts/ 폴더에 <span class="s">[고객사명]</span> 제안서 슬라이드 데크를
+./workspace/drafts/ 폴더에 <span class="s">[고객사명]</span> 제안서 슬라이드 데크를
 <span class="k">frontend-slides</span> 스킬로 만들어줘.
 
 주제: <span class="s">[한 줄 요약]</span>  ·  필수 슬라이드: 표지 / 문제 / 솔루션 / 사례 / 가격 / 다음
@@ -1694,13 +1694,13 @@ npm --version</div>
 <div class="code reveal" aria-label="PPT와 PDF 내보내기 명령">
 <div class="code-gutter"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
 <div class="code-body" data-typewriter><span class="c"># PPT — 회사가 정한 슬라이드 양식이 있을 때</span>
-~/proposals/templates/표준제안서.pptx 의 양식을 그대로 써서
+./workspace/templates/표준제안서.pptx 의 양식을 그대로 써서
 방금 만든 HTML 데크를 <span class="k">pptx-from-layouts</span>로 PPT 파일로 만들어줘.
 
 <span class="c"># PDF — 이메일·인쇄용 정적 문서로</span>
 <span class="k">bash</span> ~/.claude/skills/frontend-slides/scripts/export-pdf.sh \
-    ~/proposals/exports/lecture.html \
-    ~/proposals/exports/lecture.pdf</div>
+    ./workspace/exports/lecture.html \
+    ./workspace/exports/lecture.pdf</div>
 </div>
         <p class="code-caption reveal">— PPT는 <em class="ital crimson">회사 양식 그대로</em>, PDF는 1920×1080 스냅샷으로. 둘 다 단일 명령으로 끝납니다.</p>
     </div>
