@@ -182,7 +182,7 @@ Every `.slide` carries:
 <section class="slide" data-screen-label="01 Cover">
 ```
 
-1-indexed, two-digit, matching the visible page number ("p. 01 / 24"). Used by inline-edit/comment tools to identify which slide a remark applies to.
+1-indexed, two-digit, matching the visible page number ("p. 01 / 18"). Used by inline-edit/comment tools to identify which slide a remark applies to.
 
 ---
 

@@ -57,7 +57,7 @@ bash scripts/setup-macos.sh
 bash scripts/setup-linux.sh
 ```
 
-스크립트가 처리: FFmpeg · Poppler · LibreOffice · Python 패키지 13개 · Playwright Chromium · Node Playwright. 자세한 단계는 [SETUP.md](SETUP.md).
+스크립트가 처리: FFmpeg · Poppler · LibreOffice · Python 패키지 14개 · Playwright Chromium · Node Playwright. 세부 단계는 각 스크립트 주석 및 `bash scripts/verify.sh` 출력을 참고하세요.
 
 ### 3. Claude Code에서 문서 스킬 활성화 (한 번만)
 
@@ -92,11 +92,10 @@ bash scripts/verify.sh        # Mac/Linux/Git Bash
 ```
 .
 ├── README.md
-├── SETUP.md                  ← OS별 상세 설치 (트러블슈팅 포함)
-├── lecture.DESIGN.md         ← Paper & Ink 디자인 시스템 명세
+├── GUIDE.md                  ← 슬라이드·제안서 작성 가이드
 ├── exports/
 │   ├── lecture.html          ← 강의 자료 예시 (25슬라이드 데크)
-│   ├── lecture.html GUIDE.md ← 슬라이드 작성 가이드
+│   ├── lecture.DESIGN.md     ← Paper & Ink 디자인 시스템 명세
 │   ├── capture-slides.mjs    ← HTML → MP4 변환 스크립트
 │   ├── package.json          ← Node 의존성 (playwright)
 │   └── render-mp4.md         ← MP4 변환 절차
@@ -104,8 +103,6 @@ bash scripts/verify.sh        # Mac/Linux/Git Bash
 │   ├── setup-macos.sh
 │   ├── setup-windows.ps1
 │   ├── setup-linux.sh
-│   ├── render-mp4.sh         ← 서버 + 캡처 한 번에
-│   ├── render-mp4.ps1
 │   └── verify.sh / verify.ps1
 ├── templates/                ← (gitignored) 회사 PPT 템플릿 두는 곳
 ├── drafts/                   ← (gitignored) 작업 중 파일
@@ -139,8 +136,8 @@ bash scripts/verify.sh        # Mac/Linux/Git Bash
 |------|-----------|------|
 | **HTML** | 그대로 사용 | 브라우저에서 열기 |
 | **PPTX** | Claude Code 내 `document-skills:pptx` 또는 `pptx-from-layouts` | `"이 HTML을 회사 템플릿으로 PPT 변환해줘"` |
-| **PDF** | Ctrl+P 또는 Playwright | `bash scripts/export-pdf.sh exports/lecture.html` |
-| **MP4** | Playwright 캡처 + FFmpeg 인코딩 | `bash scripts/render-mp4.sh` |
+| **PDF** | 브라우저 Ctrl+P 또는 Playwright | 브라우저에서 열고 Ctrl+P → PDF 저장 |
+| **MP4** | Playwright 캡처 + FFmpeg 인코딩 | `node exports/capture-slides.mjs` (상세: `exports/render-mp4.md`) |
 
 ---
 
@@ -149,7 +146,7 @@ bash scripts/verify.sh        # Mac/Linux/Git Bash
 1. `drafts/<클라이언트>/` 폴더 생성
 2. Claude Code에서: `"frontend-slides로 ~/drafts/<클라이언트>/proposal.html 슬라이드 데크 만들어줘. lecture.DESIGN.md의 톤을 따라줘"`
 3. 검토 후 `exports/`로 이동, PPT/PDF 변환
-4. 영상이 필요하면 `bash scripts/render-mp4.sh` 
+4. 영상이 필요하면 `node exports/capture-slides.mjs` (절차: `exports/render-mp4.md`)
 
 `lecture.DESIGN.md`가 디자인 시스템 가드레일이라, 모든 새 제안서가 같은 톤으로 통일됩니다.
 

@@ -1,21 +1,23 @@
 # 제안서 작성 가이드
 
-이 워크스페이스(`./workspace/`)에서 Claude Code로 제안서를 작성·변환하는 방법을 정리한 문서입니다.
+이 레포(`ai-doc-stack/`)에서 Claude Code로 제안서를 작성·변환하는 방법을 정리한 문서입니다.
 
 ---
 
 ## 1. 워크스페이스 구조
 
 ```
-./workspace/
+ai-doc-stack/
 ├── templates/   회사 PPT 템플릿(.pptx), 마크다운 양식, 브랜드 자산
-├── drafts/      작업 중인 제안서 (.md, .html, .pptx)
-├── assets/      이미지, 로고, 차트 원본
-├── exports/     최종 산출물 (.pdf, .pptx, .html)
-└── GUIDE.md     이 문서
+├── drafts/      작업 중인 제안서 (.md, .html, .pptx)  ← gitignored
+├── assets/      이미지, 로고, 차트 원본               ← gitignored
+├── exports/     강의·슬라이드 예시 및 변환 스크립트
+├── scripts/     OS별 설치·검증 스크립트
+├── GUIDE.md     이 문서
+└── README.md    빠른 시작
 ```
 
-작업 시작 전: `cd ./workspace && claude` 로 Claude Code 진입.
+작업 시작 전: `cd <ai-doc-stack 레포 경로> && claude` 로 Claude Code 진입.
 
 ---
 
@@ -79,7 +81,7 @@
 ### Step 1. HTML 슬라이드 데크 만들기
 프롬프트 예시:
 ```
-./workspace/drafts/ 에 [고객사명] 제안서 슬라이드 데크를 frontend-slides 로 만들어줘.
+drafts/ 에 [고객사명] 제안서 슬라이드 데크를 frontend-slides 로 만들어줘.
 주제: [한 줄 요약]
 필수 슬라이드: 표지 / 문제 정의 / 솔루션 / 사례 / 가격 / 다음 단계
 톤: [예: 전문적이고 미니멀, 다크 모드]
@@ -95,22 +97,22 @@ frontend-slides는 먼저 3가지 시각 스타일 미리보기를 만들어 보
 
 **(a) 회사 PPT 템플릿이 있다면** — `pptx-from-layouts`
 ```
-./workspace/templates/회사템플릿.pptx 의 레이아웃을 사용해서
-./workspace/drafts/제안서.md (현재 HTML 데크의 내용을 마크다운으로 정리)로
-PPT를 만들어줘. 출력: ./workspace/exports/제안서.pptx
+templates/회사템플릿.pptx 의 레이아웃을 사용해서
+drafts/제안서.md (현재 HTML 데크의 내용을 마크다운으로 정리)로
+PPT를 만들어줘. 출력: exports/제안서.pptx
 ```
 
 **(b) 일반 변환** — Anthropic 공식 `pptx` 스킬
 ```
 방금 만든 HTML 슬라이드를 .pptx 로 변환해줘.
-출력: ./workspace/exports/제안서.pptx
+출력: exports/제안서.pptx
 ```
 
 ### Step 4. PDF로도 내보내기 (이메일 첨부용)
 ```
-./workspace/drafts/index.html 을 ./workspace/exports/제안서.pdf 로 내보내줘.
+drafts/index.html 을 exports/제안서.pdf 로 내보내줘.
 ```
-내부적으로 `bash scripts/export-pdf.sh` (Playwright 기반)이 실행됩니다.
+브라우저에서 해당 HTML을 열고 Ctrl+P → PDF로 저장하거나, Playwright를 통해 변환합니다.
 
 ---
 
@@ -119,8 +121,8 @@ PPT를 만들어줘. 출력: ./workspace/exports/제안서.pptx
 ### 5-1. 마크다운 → 회사 템플릿 PPT (회사 표준 양식이 엄격할 때)
 
 ```
-./workspace/templates/표준제안서.pptx 의 슬라이드 마스터를 분석하고
-./workspace/drafts/제안서.md 의 헤딩 구조에 맞춰 PPT를 생성해줘.
+templates/표준제안서.pptx 의 슬라이드 마스터를 분석하고
+drafts/제안서.md 의 헤딩 구조에 맞춰 PPT를 생성해줘.
 ```
 
 `pptx-from-layouts`는 템플릿의 레이아웃 ID와 플레이스홀더를 그대로 사용해서, 회사가 정한 폰트·로고·여백을 깨뜨리지 않습니다.
@@ -128,7 +130,7 @@ PPT를 만들어줘. 출력: ./workspace/exports/제안서.pptx
 ### 5-2. 기존 자료(PDF/DOCX) → PPT (참고 자료가 많을 때)
 
 ```
-./workspace/assets/시장분석.pdf, ./workspace/assets/내부정책.docx 를 읽어서
+assets/시장분석.pdf, assets/내부정책.docx 를 읽어서
 요점만 추려 PPT 슬라이드 데크를 만들어줘.
 ```
 
@@ -197,8 +199,8 @@ omc setup
 ## 8. 추가 메모
 
 - **API 키 사용 안 함**: 모든 작업이 Claude Code Max 구독 내에서 처리됩니다. OpenAI API 키 별도 결제 불필요.
-- **민감 정보**: 클라이언트 비공개 자료는 `./workspace/drafts/` 에만 두고 외부 서비스(웹 fetch 등)에 노출되지 않게 주의.
-- **버전 관리**: 필요하면 `cd ./workspace && git init` 후 `assets/` 의 큰 파일은 `.gitignore`에 추가.
+- **민감 정보**: 클라이언트 비공개 자료는 `drafts/` 에만 두고 외부 서비스(웹 fetch 등)에 노출되지 않게 주의.
+- **버전 관리**: 이 레포는 이미 git으로 관리됩니다. `assets/` 의 큰 파일은 `.gitignore`에 추가되어 있습니다.
 
 ---
 

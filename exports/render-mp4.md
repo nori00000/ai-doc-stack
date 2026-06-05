@@ -13,7 +13,7 @@ HyperFrames(HeyGen, Apache 2.0)와 Playwright를 사용해 강의 자료를 영�
 
 FFmpeg 위치 (winget 설치, user PATH 등록 — 새 셸에서 자동 인식):
 ```
-C:\Users\YourName\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Essentials_*\ffmpeg-8.1.1-essentials_build\bin\ffmpeg.exe
+C:\Users\1\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Essentials_*\ffmpeg-8.1.1-essentials_build\bin\ffmpeg.exe
 ```
 현재 셸에서 즉시 쓰려면 새 PowerShell을 열거나, `capture-slides.mjs`를 사용하세요 (스크립트가 PATH 미등록 시 winget 캐시를 자동 탐색합니다).
 
@@ -25,18 +25,18 @@ C:\Users\YourName\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Essentials
 
 ```bash
 # 1. 로컬 서버 (별도 셸)
-cd ./workspace/exports && python -m http.server 8000
+cd exports && python -m http.server 8000
 
 # 2. 캡처 + 인코딩
-cd ./workspace/exports && node capture-slides.mjs
+cd exports && node capture-slides.mjs
 ```
 
 스크립트가 처리하는 것:
 - 슬라이드별 강제 visible 상태로 만들기 (`.reveal` opacity 1, SVG `stroke-dashoffset: 0`)
-- 1920×1080 PNG 캡처 25장
+- 1920×1080 PNG 캡처 (슬라이드 수 동적 감지 — 현재 `lecture.html` 기준 18장)
 - FFmpeg로 mp4 인코딩 (슬라이드당 6초, 30fps)
 
-산출: `./workspace/exports/lecture.mp4` (약 2~3분)
+산출: `exports/lecture.mp4` (약 2~3분)
 
 환경 변수로 조정:
 ```bash
@@ -53,7 +53,7 @@ LECTURE_URL=http://localhost:8000/lecture.html OUTPUT=./demo.mp4 node capture-sl
 git clone https://github.com/heygen-com/hyperframes ~/tools/hyperframes
 
 # 2. 새 composition 프로젝트
-cd ./workspace/exports
+cd exports
 npx hyperframes init lecture-video
 cd lecture-video
 
