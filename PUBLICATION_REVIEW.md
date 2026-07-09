@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Repository | `nori00000/ai-doc-stack` |
-| Worktree | `<local-public-readiness-worktree>|
+| Worktree | `ai-doc-stack-public-readiness` (branch: `public-readiness/ai-doc-stack`) |
 | Public readiness | `ready-for-final-visibility-approval` |
 | Proposed visibility | `public after checks pass` |
 | Code license | MIT |

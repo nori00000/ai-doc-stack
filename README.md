@@ -35,7 +35,7 @@ winget install jdx.mise
 ### 1. Clone
 
 ```bash
-git clone git@github.com:nori00000/ai-doc-stack.git
+git clone https://github.com/nori00000/ai-doc-stack.git
 cd ai-doc-stack
 mise install   # .tool-versions 보고 Node 24 + Python 3.12 자동 설치
 ```
@@ -73,7 +73,9 @@ Claude Code 입력창에 차례로:
 /reload-plugins
 ```
 
-이걸로 17개 공식 문서 스킬(`pptx`, `docx`, `xlsx`, `pdf`, `frontend-design`, `theme-factory`, `brand-guidelines` 등) 활성화. 한 번만 하면 다른 PC에서도 동일.
+이걸로 20여 개 공식 문서 스킬(`pptx`, `docx`, `xlsx`, `pdf`, `frontend-design`, `theme-factory`, `brand-guidelines` 등) 활성화. 한 번만 하면 다른 PC에서도 동일.
+
+> 참고: `anthropics/skills` 마켓플레이스 등록과 `document-skills@anthropic-agent-skills` 플러그인 ID는 Anthropic 공식 문서 기준으로 확인됨(2026-07-08 재검증). 다만 이 저장소가 clone된 개별 머신에서 위 3줄을 실제로 실행했는지는 머신마다 다르므로, `bash scripts/verify.sh`의 `~/.claude/skills/` 항목으로 스킬 설치 여부를 먼저 확인하세요.
 
 ### 4. 환경 검증
 
@@ -83,7 +85,7 @@ bash scripts/verify.sh        # Mac/Linux/Git Bash
 .\scripts\verify.ps1          # Windows PowerShell
 ```
 
-모든 도구가 PATH에 있는지, 버전이 맞는지 한 번에 체크.
+모든 도구가 PATH에 있는지, 현재 설치된 버전이 무엇인지 한 번에 확인.
 
 ---
 
@@ -93,6 +95,10 @@ bash scripts/verify.sh        # Mac/Linux/Git Bash
 .
 ├── README.md
 ├── GUIDE.md                  ← 슬라이드·제안서 작성 가이드
+├── LICENSE                   ← MIT (코드)
+├── NOTICE.md                 ← 저작권·재사용 고지
+├── PROJECT.md                ← 프로젝트 메타데이터 (키워드·목적)
+├── PUBLICATION_REVIEW.md     ← 공개 준비 점검 기록
 ├── exports/
 │   ├── lecture.html          ← 강의 자료 예시 (25슬라이드 데크)
 │   ├── lecture.DESIGN.md     ← Paper & Ink 디자인 시스템 명세
@@ -104,7 +110,7 @@ bash scripts/verify.sh        # Mac/Linux/Git Bash
 │   ├── setup-windows.ps1
 │   ├── setup-linux.sh
 │   └── verify.sh / verify.ps1
-├── templates/                ← (gitignored) 회사 PPT 템플릿 두는 곳
+├── templates/                ← 회사 PPT 템플릿 (*.pptx/docx/key는 gitignored)
 ├── drafts/                   ← (gitignored) 작업 중 파일
 ├── assets/                   ← (gitignored) 이미지·자산
 ├── .tool-versions            ← mise 런타임 핀

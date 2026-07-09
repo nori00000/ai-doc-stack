@@ -166,8 +166,8 @@ The HTML file must convert cleanly to:
 | Format | Skill / tool |
 |--------|--------------|
 | PPTX | Anthropic `pptx` skill, or `pptx-from-layouts` for company templates |
-| PDF | `frontend-slides/scripts/export-pdf.sh` (Playwright) or `@media print` |
-| MP4 | HeyGen `hyperframes` (Apache 2.0, 19.7k★) — *planned* |
+| PDF | Playwright (`page.pdf()`) or `@media print` |
+| MP4 | `capture-slides.mjs` (Playwright + FFmpeg) or HeyGen `hyperframes` (Apache 2.0) — 상세: `render-mp4.md` |
 
 Every animation must have a valid static end state for capture.
 **No Canvas/WebGL. No realtime data.** Animation is enhancement, not substance.
@@ -182,7 +182,7 @@ Every `.slide` carries:
 <section class="slide" data-screen-label="01 Cover">
 ```
 
-1-indexed, two-digit, matching the visible page number ("p. 01 / 18"). Used by inline-edit/comment tools to identify which slide a remark applies to.
+Two-digit stable identifier assigned at authoring time. Labels are sequential from "01" to "25". The current deck has 25 slides. Used by inline-edit/comment tools to identify which slide a remark applies to.
 
 ---
 

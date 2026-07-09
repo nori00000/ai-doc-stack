@@ -28,9 +28,12 @@ ai-doc-stack/
 |------|------|------|
 | Node.js | 24.15.0 | omc, npm 도구 |
 | Python | 3.12.10 | 스킬 스크립트 실행 |
-| Poppler | 25.07.0 | PDF→이미지 변환 (pdf2image) |
-| LibreOffice | 26.2.3.2 | PPTX 썸네일·검증·폴백 변환 |
+| Poppler | 26.04.0 ※ | PDF→이미지 변환 (pdf2image) |
+| LibreOffice | 26.2.2.2 ※ | PPTX 썸네일·검증·폴백 변환 |
 | Playwright Chromium | 1.60.0 | HTML→PDF 렌더링 |
+| FFmpeg | 8.1.x ※ | HTML→MP4 인코딩 (`exports/capture-slides.mjs`, 상세: `exports/render-mp4.md`) |
+
+> ※ Node.js·Python 버전은 `.tool-versions`로 고정. Poppler·LibreOffice 버전은 Windows winget 기준 참고값이며 Mac(brew)·Linux(apt)에서는 설치 시점의 최신 버전이 사용됩니다.
 
 ### 스킬 (총 20+, 제안서 관련 핵심만)
 | 네임스페이스 | 스킬 | 핵심 용도 |
@@ -172,10 +175,10 @@ canvas-design 으로 제안서 표지 이미지를 만들어줘.
 
 ### 설치 상태 빠른 점검
 ```bash
-python --version                # 3.12.10
+python --version                # Python 3.12.10
 node --version                  # v24.15.0
-pdftoppm -v                     # 25.07.0 (Poppler)
-"C:\Program Files\LibreOffice\program\soffice.com" --version  # 26.2.3.2
+pdftoppm -v                     # 26.04.0 (Poppler)
+"C:\Program Files\LibreOffice\program\soffice.com" --version  # 26.2.2.2
 python -c "import pptx, pdf2image, playwright, markitdown; print('ok')"
 ```
 
@@ -190,18 +193,19 @@ python -c "import pptx, pdf2image, playwright, markitdown; print('ok')"
 ### tmux (오마이클로드코드 보조)
 필요해지면:
 ```
-winget install psmux
+winget install -e --id marlocarlo.psmux
 omc setup
 ```
+(winget 패키지 ID `marlocarlo.psmux` 확인됨, 2026-07-08 재검증)
 
 ---
 
 ## 8. 추가 메모
 
-- **API 키 사용 안 함**: 모든 작업이 Claude Code Max 구독 내에서 처리됩니다. OpenAI API 키 별도 결제 불필요.
+- **API 키 사용 안 함**: 모든 작업이 Claude Code Max 구독 내에서 처리됩니다. Anthropic API 키 별도 결제 불필요.
 - **민감 정보**: 클라이언트 비공개 자료는 `drafts/` 에만 두고 외부 서비스(웹 fetch 등)에 노출되지 않게 주의.
 - **버전 관리**: 이 레포는 이미 git으로 관리됩니다. `assets/` 의 큰 파일은 `.gitignore`에 추가되어 있습니다.
 
 ---
 
-마지막 업데이트: 2026-05-19
+마지막 업데이트: 2026-07-08 (doc-sync 정합성 검증 반영: FFmpeg 도구 표 추가, psmux winget ID 검증)

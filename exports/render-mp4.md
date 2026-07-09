@@ -1,19 +1,19 @@
 # lecture.html → MP4 변환 가이드
 
-HyperFrames(HeyGen, Apache 2.0)와 Playwright를 사용해 강의 자료를 영상으로 렌더링하는 방법.
+Playwright와 FFmpeg를 사용해 강의 자료를 영상으로 렌더링하는 방법. HyperFrames(HeyGen, Apache 2.0)는 선택적 고급 방법으로, 별도 설치가 필요합니다(현재 저장소 삭제 상태 — 필요 시 재클론).
 
 ## 사전 요구사항
 
 | 항목 | 상태 |
 |------|------|
-| Node.js ≥ 22 | ✅ v24.15.0 |
+| Node.js ≥ 24 | ✅ v24.15.0 |
 | Playwright + Chromium | ✅ 설치됨 |
 | **FFmpeg** | ✅ **v8.1.1 essentials** (Gyan, MSYS2 빌드) |
 | HyperFrames 저장소 | 삭제됨 — 필요 시 `git clone https://github.com/heygen-com/hyperframes ~/tools/hyperframes` |
 
 FFmpeg 위치 (winget 설치, user PATH 등록 — 새 셸에서 자동 인식):
 ```
-C:\Users\1\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Essentials_*\ffmpeg-8.1.1-essentials_build\bin\ffmpeg.exe
+%USERPROFILE%\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Essentials_*\ffmpeg-8.1.1-essentials_build\bin\ffmpeg.exe
 ```
 현재 셸에서 즉시 쓰려면 새 PowerShell을 열거나, `capture-slides.mjs`를 사용하세요 (스크립트가 PATH 미등록 시 winget 캐시를 자동 탐색합니다).
 
@@ -33,7 +33,7 @@ cd exports && node capture-slides.mjs
 
 스크립트가 처리하는 것:
 - 슬라이드별 강제 visible 상태로 만들기 (`.reveal` opacity 1, SVG `stroke-dashoffset: 0`)
-- 1920×1080 PNG 캡처 (슬라이드 수 동적 감지 — 현재 `lecture.html` 기준 18장)
+- 1920×1080 PNG 캡처 (슬라이드 수 동적 감지 — 현재 `lecture.html` 기준 25장)
 - FFmpeg로 mp4 인코딩 (슬라이드당 6초, 30fps)
 
 산출: `exports/lecture.mp4` (약 2~3분)
@@ -79,7 +79,7 @@ HyperFrames는 자체 composition 포맷이라 lecture.html을 그대로 입력�
 **프로덕션·반복 갱신** → B (HyperFrames composition)
 - 검수·외주 친화적 (결정론적)
 - TTS 보이스오버, 배경 음악, 트랜지션 효과 가능
-- 우리 lecture.html의 스피커 노트(JSON 24개)를 TTS로 변환해 영상에 입힐 수 있음
+- 우리 lecture.html의 스피커 노트(JSON 25개)를 TTS로 변환해 영상에 입힐 수 있음
 
 ## 산출물 채널
 
@@ -89,7 +89,7 @@ HyperFrames는 자체 composition 포맷이라 lecture.html을 그대로 입력�
 |------|------|------|
 | HTML | 그대로 | ✅ |
 | PPTX | `document-skills:pptx` 또는 `pptx-from-layouts` | ✅ 스킬 준비됨 |
-| PDF | `frontend-slides/scripts/export-pdf.sh` 또는 Ctrl+P | ✅ |
+| PDF | Playwright (`page.pdf()`) 또는 브라우저 Ctrl+P → PDF 저장 | ✅ |
 | MP4 | `capture-slides.mjs` (A) 또는 HyperFrames (B) | ⚠️ FFmpeg 필요 |
 
 라이선스: HyperFrames Apache 2.0, FFmpeg LGPL. 상업 사용 가능.

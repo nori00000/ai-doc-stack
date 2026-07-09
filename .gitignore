@@ -39,6 +39,9 @@ __pycache__/
 .claude-design/
 *.local.json
 
+# oh-my-claudecode session state (tool-internal, not for version control)
+.omc/
+
 # OS
 .DS_Store
 Thumbs.db

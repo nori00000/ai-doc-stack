@@ -41,7 +41,8 @@ Write-Host "  -- Python packages --" -ForegroundColor Cyan
 $pyScript = @'
 import importlib, sys
 mods = ["pptx","pdf2image","markitdown","numpy","mammoth","markdownify",
-        "bs4","requests","openpyxl","fitz","playwright","pydantic"]
+        "bs4","requests","openpyxl","fitz","playwright","pydantic",
+        "svglib","reportlab"]
 missing = []
 for m in mods:
     try:

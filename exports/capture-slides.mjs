@@ -7,7 +7,7 @@
  *   2. 이 스크립트: node capture-slides.mjs
  *   3. 산출: ./lecture.mp4
  *
- * 요구사항: Node 22+, Playwright(이미 설치됨), FFmpeg
+ * 요구사항: Node 24+, Playwright(이미 설치됨), FFmpeg
  */
 
 import { chromium } from 'playwright';

@@ -30,7 +30,8 @@ printf '  \033[1;36m-- Python packages --\033[0m\n'
 python - <<'PY'
 import importlib, sys
 mods = ["pptx", "pdf2image", "markitdown", "numpy", "mammoth", "markdownify",
-        "bs4", "requests", "openpyxl", "fitz", "playwright", "pydantic"]
+        "bs4", "requests", "openpyxl", "fitz", "playwright", "pydantic",
+        "svglib", "reportlab"]
 missing = []
 for m in mods:
     try:
