@@ -48,6 +48,25 @@ What we explicitly reject:
 
 **Backgrounds per deck: max 2** (paper + paper-2). Never a third.
 
+<!-- DOC-SYNC: 2026-07-12 정정 — exports/lecture.html 실측(L2347-2426)에서 Tweaks 클래스의
+     saveState()/loadState()가 theme을 localStorage['lecture-tweaks']에 함께 영속화함을 확인.
+     2026-07-11에 추가된 "localStorage에 영속화되지 않음" 서술은 §11과도 모순되는 오기였음 — 정정. -->
+<!-- DOC-SYNC: 2026-07-20 정정 — exports/lecture.html L88(루트)·L1067-1080(ink 블록) 실측:
+     ink 블록은 --crimson-tint만 rgba(183,62,58,0.08)→0.18로 재정의하고, --crimson(#b73e3a)은
+     ink 블록에 아예 등장하지 않아 라이트 값 그대로 상속됨. "--crimson/--crimson-tint 둘 다
+     진하기가 올라간다"는 기존 서술은 부정확했음 — --crimson-tint만 진해진다고 정정. -->
+### 2b. Ink theme (dark mode toggle)
+
+`lecture.html`에는 위 라이트 팔레트("Paper")와 별도로 `html[data-theme="ink"]`
+다크 테마가 구현되어 있고, 헤더의 Paper/Ink 버튼(`.theme-btn[data-theme]`)으로
+런타임에 전환됩니다. 토큰은 라이트 팔레트를 반전한 값(`--paper: #1a1916`,
+`--ink: #faf8f3` 등)이며, `--crimson`(`#b73e3a`) 자체는 재정의되지 않고 라이트 값을
+그대로 유지합니다 — `--crimson-tint`만 진하기가 살짝 올라갑니다
+(`rgba(183,62,58,0.08)` → `rgba(183,62,58,0.18)`). 기본값은 `"paper"`(`TWEAK_DEFAULTS.theme`)이지만, 선택한
+테마는 다른 tweak 설정(폰트 스케일·accent)과 함께 `localStorage['lecture-tweaks']`에
+영속화되어 새로고침 후에도 유지됩니다(§11 참고). 새 슬라이드를 추가할 때 다크
+테마에서도 §5(crimson 규칙)와 §7(금지 목록)을 동일하게 지켜야 합니다.
+
 ---
 
 ## 3. Typography

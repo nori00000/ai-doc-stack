@@ -53,7 +53,8 @@ echo
 white "1. claude"
 white "2. /plugin marketplace add anthropics/skills"
 white "3. /plugin install document-skills@anthropic-agent-skills"
-white "4. /reload-plugins"
-white "5. bash scripts/verify.sh"
+white "4. /plugin install example-skills@anthropic-agent-skills"
+white "5. /reload-plugins"
+white "6. bash scripts/verify.sh"
 echo
 green "ai-doc-stack setup complete."

@@ -70,12 +70,17 @@ Claude Code 입력창에 차례로:
 ```
 /plugin marketplace add anthropics/skills
 /plugin install document-skills@anthropic-agent-skills
+/plugin install example-skills@anthropic-agent-skills
 /reload-plugins
 ```
 
-이걸로 20여 개 공식 문서 스킬(`pptx`, `docx`, `xlsx`, `pdf`, `frontend-design`, `theme-factory`, `brand-guidelines` 등) 활성화. 한 번만 하면 다른 PC에서도 동일.
+이걸로 Anthropic 공식 스킬 16개 활성화 — `document-skills` 플러그인(`pptx`, `docx`, `xlsx`, `pdf` 4개)과 `example-skills` 플러그인(`frontend-design`, `theme-factory`, `brand-guidelines`, `canvas-design`, `doc-coauthoring` 포함 12개). 한 번만 하면 다른 PC에서도 동일.
 
-> 참고: `anthropics/skills` 마켓플레이스 등록과 `document-skills@anthropic-agent-skills` 플러그인 ID는 Anthropic 공식 문서 기준으로 확인됨(2026-07-08 재검증). 다만 이 저장소가 clone된 개별 머신에서 위 3줄을 실제로 실행했는지는 머신마다 다르므로, `bash scripts/verify.sh`의 `~/.claude/skills/` 항목으로 스킬 설치 여부를 먼저 확인하세요.
+> 참고: `anthropics/skills` 마켓플레이스 등록과 두 플러그인 ID는 `anthropics/skills`의 `.claude-plugin/marketplace.json` 기준으로 확인됨(2026-08-12 재검증). 다만 이 저장소가 clone된 개별 머신에서 위 4줄을 실제로 실행했는지는 머신마다 다르므로, `bash scripts/verify.sh`의 `~/.claude/skills/` 항목으로 스킬 설치 여부를 먼저 확인하세요.
+>
+> <!-- DOC-SYNC: 2026-08-12 정정 — 기존 문서는 `document-skills@anthropic-agent-skills` 한 줄 설치만으로 `frontend-design`·`theme-factory`·`brand-guidelines`까지 활성화되는 것처럼 서술했으나, `anthropics/skills` marketplace.json 실측 결과 이 스킬들은 `document-skills`가 아니라 별도의 `example-skills` 플러그인 소속입니다(`document-skills`는 xlsx/docx/pptx/pdf 4개만 포함). 설치 줄과 스킬 개수를 정정하고 `example-skills` 설치 명령을 추가함. GUIDE.md §2 네임스페이스도 함께 정정. -->
+
+> **커뮤니티 스킬 3개 별도 설치 필요**: `GUIDE.md`의 메인 워크플로(§4)와 아래 "다음 단계"에서 쓰는 `frontend-slides`·`pptx-from-layouts`·`ppt-master`는 위 4줄(공식 `document-skills`·`example-skills` 플러그인)에 포함되지 않는 커뮤니티 스킬입니다. 이 저장소 문서 어디에도 이 3개의 설치 명령이 없습니다 — 사용 전 별도로 설치하세요. <!-- DOC-SYNC: 2026-08-10 발견, 설치 명령 미기재 (UNVERIFIED: 정확한 소스 저장소는 각자 확인). 2026-08-12: "위 3줄"→"위 4줄"로 갱신(example-skills 설치 줄 추가에 따른 표현 정합) -->
 
 ### 4. 환경 검증
 
@@ -114,7 +119,8 @@ bash scripts/verify.sh        # Mac/Linux/Git Bash
 ├── drafts/                   ← (gitignored) 작업 중 파일
 ├── assets/                   ← (gitignored) 이미지·자산
 ├── .tool-versions            ← mise 런타임 핀
-└── .gitignore
+├── .gitignore
+└── .gitattributes            ← 줄바꿈(LF/CRLF)·바이너리 처리 규칙
 ```
 
 ---

@@ -39,6 +39,6 @@ name.
 
 ## Repository-Specific Public Readiness / 레포별 공개 준비 상태
 
-Current status: `ready-for-final-visibility-approval`
+Current status: `published` (public since 2026-06-02, confirmed via `gh repo view`) <!-- DOC-SYNC: 2026-07-11 재검증 -->
 
 Release note: Generated outputs and external CDN dependencies are documented; private assets remain excluded by .gitignore.

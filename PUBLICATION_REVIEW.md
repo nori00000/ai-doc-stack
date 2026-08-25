@@ -4,8 +4,8 @@
 | --- | --- |
 | Repository | `nori00000/ai-doc-stack` |
 | Worktree | `ai-doc-stack-public-readiness` (branch: `public-readiness/ai-doc-stack`) |
-| Public readiness | `ready-for-final-visibility-approval` |
-| Proposed visibility | `public after checks pass` |
+| Public readiness | `published` <!-- DOC-SYNC: 2026-07-11 갱신, `gh repo view nori00000/ai-doc-stack` 실측 visibility=PUBLIC --> |
+| Proposed visibility | `public` (실측 완료, 최초 공개 커밋 `9b2fb9f` 2026-06-02) |
 | Code license | MIT |
 | Docs license | CC BY 4.0 unless otherwise noted |
 | Secret scan | regex scan performed; no dedicated scanner installed locally |

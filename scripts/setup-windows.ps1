@@ -86,6 +86,7 @@ Write-Host "       claude" -ForegroundColor DarkGray
 Write-Host "  2. " -NoNewline; Write-Host "In Claude Code (one-time):" -ForegroundColor White
 Write-Host "       /plugin marketplace add anthropics/skills" -ForegroundColor DarkGray
 Write-Host "       /plugin install document-skills@anthropic-agent-skills" -ForegroundColor DarkGray
+Write-Host "       /plugin install example-skills@anthropic-agent-skills" -ForegroundColor DarkGray
 Write-Host "       /reload-plugins" -ForegroundColor DarkGray
 Write-Host "  3. " -NoNewline; Write-Host "Verify environment:" -ForegroundColor White
 Write-Host "       .\scripts\verify.ps1" -ForegroundColor DarkGray

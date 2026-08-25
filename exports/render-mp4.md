@@ -1,6 +1,8 @@
 # lecture.html → MP4 변환 가이드
 
-Playwright와 FFmpeg를 사용해 강의 자료를 영상으로 렌더링하는 방법. HyperFrames(HeyGen, Apache 2.0)는 선택적 고급 방법으로, 별도 설치가 필요합니다(현재 저장소 삭제 상태 — 필요 시 재클론).
+Playwright와 FFmpeg를 사용해 강의 자료를 영상으로 렌더링하는 방법. HyperFrames(HeyGen, Apache 2.0)는 선택적 고급 방법으로, 별도 설치가 필요합니다(로컬 클론 없음 — 필요 시 아래 명령으로 클론).
+
+<!-- DOC-SYNC: 정정 — "삭제됨"은 업스트림 저장소가 아니라 이 머신의 로컬 클론이 없다는 뜻. heygen-com/hyperframes 업스트림은 활성(isArchived=false) (최초 2026-08-11, 최종확인 2026-08-25) -->
 
 ## 사전 요구사항
 
@@ -9,7 +11,7 @@ Playwright와 FFmpeg를 사용해 강의 자료를 영상으로 렌더링하는 
 | Node.js ≥ 24 | ✅ v24.15.0 |
 | Playwright + Chromium | ✅ 설치됨 |
 | **FFmpeg** | ✅ **v8.1.1 essentials** (Gyan, MSYS2 빌드) |
-| HyperFrames 저장소 | 삭제됨 — 필요 시 `git clone https://github.com/heygen-com/hyperframes ~/tools/hyperframes` |
+| HyperFrames 로컬 클론 | 없음 — 필요 시 `git clone https://github.com/heygen-com/hyperframes ~/tools/hyperframes` (업스트림 저장소 자체는 활성 상태, 2026-08-24 재검증) |
 
 FFmpeg 위치 (winget 설치, user PATH 등록 — 새 셸에서 자동 인식):
 ```
@@ -42,14 +44,18 @@ cd exports && node capture-slides.mjs
 ```bash
 SECONDS_PER_SLIDE=8 node capture-slides.mjs  # 더 천천히
 LECTURE_URL=http://localhost:8000/lecture.html OUTPUT=./demo.mp4 node capture-slides.mjs
+FFMPEG_PATH=/usr/local/bin/ffmpeg node capture-slides.mjs  # PATH 미등록 시 직접 지정
 ```
+
+<!-- DOC-SYNC: 2026-07-14 추가 — capture-slides.mjs의 findFfmpeg()가 지원하는 FFMPEG_PATH
+     override가 문서에 누락되어 있어 보강 (PATH/winget 탐색 실패 시 탈출구). -->
 
 ### B. HyperFrames 정식 composition (복잡, 결정론적)
 
 장점: 동일 코드 → 동일 영상, TTS·배경 음악·타이밍 정밀 제어.
 
 ```bash
-# 1. HyperFrames 재클론
+# 1. HyperFrames 클론 (로컬에 없으면)
 git clone https://github.com/heygen-com/hyperframes ~/tools/hyperframes
 
 # 2. 새 composition 프로젝트
