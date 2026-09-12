@@ -20,7 +20,12 @@ Section "mise (runtime version manager)"
 if (-not (Get-Command mise -ErrorAction SilentlyContinue)) {
     Step "Installing mise via winget..."
     winget install jdx.mise --silent --accept-source-agreements --accept-package-agreements
-    Warn "Open a NEW PowerShell after this script finishes, then re-run 'mise install'."
+    if ($LASTEXITCODE -ne 0) {
+        throw "mise installation via winget failed with exit code $LASTEXITCODE."
+    }
+    Warn "mise was installed, but it is not available to this PowerShell session yet."
+    Warn "Open a NEW PowerShell, then re-run '.\\scripts\\setup-windows.ps1'."
+    exit 0
 } else {
     Ok "mise already installed: $((mise --version) -join ' ')"
 }
